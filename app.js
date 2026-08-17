@@ -22,6 +22,8 @@
   const elements = {
     html: document.documentElement,
     slide: document.getElementById("slide-live"),
+    start: document.getElementById("start-button"),
+    startLabel: document.getElementById("start-trigger-label"),
     back: document.getElementById("back-button"),
     next: document.getElementById("next-button"),
     backLabel: document.getElementById("back-label"),
@@ -221,6 +223,8 @@
 
     elements.html.lang = state.language;
     document.title = `${data.recipe[state.language].title} · ${ui.recipeTitle}`;
+    elements.startLabel.textContent = ui.home;
+    elements.start.disabled = state.slide === 0;
     elements.recipeTriggerLabel.textContent = ui.recipe;
     elements.backLabel.textContent = ui.back;
     elements.nextLabel.textContent = state.slide === lastIndex - 1 ? ui.finish : ui.next;
@@ -309,6 +313,7 @@
     elements.openRecipe.focus();
   }
 
+  elements.start.addEventListener("click", resetGuide);
   elements.back.addEventListener("click", () => goToSlide(state.slide - 1));
   elements.next.addEventListener("click", () => goToSlide(state.slide + 1));
   elements.openRecipe.addEventListener("click", openRecipe);

@@ -1,6 +1,7 @@
 window.COOKING_DATA = {
   ui: {
     ko: {
+      home: "처음으로",
       recipe: "전체 레시피",
       back: "이전",
       next: "다음",
@@ -15,6 +16,7 @@ window.COOKING_DATA = {
       serving: "5명 1조",
     },
     en: {
+      home: "Start",
       recipe: "Full Recipe",
       back: "Back",
       next: "Next",
@@ -29,6 +31,7 @@ window.COOKING_DATA = {
       serving: "For 5 people",
     },
     vi: {
+      home: "Từ đầu",
       recipe: "Công thức",
       back: "Quay lại",
       next: "Tiếp theo",

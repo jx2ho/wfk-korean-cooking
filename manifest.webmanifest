@@ -11,9 +11,9 @@
   "theme_color": "#f5ecdf",
   "icons": [
     {
-      "src": "./assets/dining-icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "./assets/taegeuk-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ]
