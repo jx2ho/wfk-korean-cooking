@@ -1,4 +1,4 @@
-const CACHE_NAME = "danang-kfood-v3";
+const CACHE_NAME = "danang-kfood-v6";
 const APP_ASSETS = [
   "./",
   "./index.html",
@@ -6,7 +6,7 @@ const APP_ASSETS = [
   "./data.js",
   "./app.js",
   "./manifest.webmanifest",
-  "./assets/icon.svg",
+  "./assets/dining-icon.svg",
   "./assets/step-1.webp",
   "./assets/step-2.webp",
   "./assets/step-3.webp",

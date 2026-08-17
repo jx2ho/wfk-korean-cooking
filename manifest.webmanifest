@@ -11,7 +11,7 @@
   "theme_color": "#f5ecdf",
   "icons": [
     {
-      "src": "./assets/icon.svg",
+      "src": "./assets/dining-icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
