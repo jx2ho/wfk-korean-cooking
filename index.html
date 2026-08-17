@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f5ecdf" />
+    <meta name="description" content="A trilingual mobile cooking guide for making Rabokki and Hwachae." />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+    <link rel="preload" href="./assets/step-6.webp" as="image" type="image/webp" />
+    <link rel="preload" href="./assets/step-1.webp" as="image" type="image/webp" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Korean Cooking Class · Rabokki &amp; Hwachae</title>
+  </head>
+  <body>
+    <div class="app-shell" id="app">
+      <header class="app-bar">
+        <div class="brand" aria-label="Korean Cooking Class">
+          <span class="brand-mark" aria-hidden="true"><i></i></span>
+          <span class="brand-copy">K-FOOD<br /><b>CLASS</b></span>
+        </div>
+
+        <div class="bar-actions">
+          <button class="recipe-trigger" id="open-recipe" type="button" aria-haspopup="dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H20v16H7.5A2.5 2.5 0 0 0 5 20.5v-16Z" />
+              <path d="M5 20.5A2.5 2.5 0 0 1 7.5 18H20v3H7.5A2.5 2.5 0 0 1 5 18.5V4" />
+            </svg>
+            <span id="recipe-trigger-label">Recipe</span>
+          </button>
+
+          <div class="language-switch" role="group" aria-label="Language">
+            <button type="button" data-lang="ko" aria-label="한국어">KO</button>
+            <button type="button" data-lang="en" aria-label="English">EN</button>
+            <button type="button" data-lang="vi" aria-label="Tiếng Việt">VI</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="slide-viewport" id="slide-live" aria-live="polite"></main>
+
+      <footer class="bottom-nav">
+        <button class="nav-button nav-back" id="back-button" type="button">
+          <span aria-hidden="true">←</span>
+          <span id="back-label">Back</span>
+        </button>
+
+        <div class="progress-cluster" aria-label="Progress">
+          <span class="progress-label" id="progress-label">Start</span>
+          <div class="progress-dots" id="progress-dots" aria-hidden="true"></div>
+        </div>
+
+        <button class="nav-button nav-next" id="next-button" type="button">
+          <span id="next-label">Next</span>
+          <span aria-hidden="true">→</span>
+        </button>
+      </footer>
+    </div>
+
+    <section class="recipe-panel" id="recipe-panel" role="dialog" aria-modal="true" aria-labelledby="recipe-title" hidden>
+      <div class="recipe-sheet">
+        <header class="recipe-header">
+          <div>
+            <p class="eyebrow" id="recipe-eyebrow">KEEP THIS RECIPE</p>
+            <h2 id="recipe-title">Full Recipe</h2>
+          </div>
+          <button class="icon-button" id="close-recipe" type="button" aria-label="Close">×</button>
+        </header>
+        <div class="recipe-body" id="recipe-body"></div>
+      </div>
+    </section>
+
+    <div class="rotate-notice" aria-hidden="true">
+      <div class="phone-icon">↻</div>
+      <strong>Please rotate your phone vertically.</strong>
+      <span>세로 화면으로 돌려주세요.</span>
+    </div>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

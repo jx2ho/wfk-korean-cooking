@@ -1,0 +1,20 @@
+{
+  "name": "Korean Cooking Class — Rabokki & Hwachae",
+  "short_name": "K-Food Class",
+  "description": "A trilingual mobile cooking guide for Rabokki and Hwachae.",
+  "lang": "en",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5ecdf",
+  "theme_color": "#f5ecdf",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
