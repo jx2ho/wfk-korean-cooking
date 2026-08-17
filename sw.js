@@ -1,4 +1,4 @@
-const CACHE_NAME = "danang-kfood-v2";
+const CACHE_NAME = "danang-kfood-v3";
 const APP_ASSETS = [
   "./",
   "./index.html",
