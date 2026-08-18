@@ -82,11 +82,9 @@
             </div>
             <div class="action-panel step-description">
               <strong>${escapeHtml(text.action)}</strong>
-              <p>${escapeHtml(text.detail)}</p>
-              <span class="tiny-tip">→ ${escapeHtml(text.tip)}</span>
+              <p>${escapeHtml(text.followup)}</p>
             </div>
           </section>
-          <p class="soak-followup">${escapeHtml(text.followup)}</p>
         </div>
       </article>`;
   }
@@ -146,7 +144,7 @@
             <ol class="mini-steps step-description">${text.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
           </section>
           <div class="optional-card step-note">
-            <span><b>${escapeHtml(text.optionalTitle)}</b> — ${escapeHtml(text.optional)}</span>
+            <span>${escapeHtml(text.optional)}</span>
             <span class="optional-pill">OPTIONAL</span>
           </div>
           ${iceGuide}

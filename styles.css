@@ -685,19 +685,6 @@ button:focus-visible {
   gap: clamp(3px, 0.55dvh, 6px);
 }
 
-.soak-followup {
-  flex: 0 0 auto;
-  margin: 0;
-  padding: 8px 12px;
-  border-radius: 12px;
-  background: rgba(55, 115, 131, 0.11);
-  color: var(--blue-deep);
-  font-size: clamp(12.5px, 1.65dvh, 15px);
-  font-weight: 750;
-  line-height: 1.35;
-  text-align: center;
-}
-
 .process-list li,
 .mini-steps li {
   display: grid;
