@@ -20,7 +20,7 @@ python -m http.server 4173
 
 - `step-1.webp`: 떡 불리기
 - `step-2.webp`: 과일·어묵 썰기
-- `step-3.webp`: 떡볶이 끓이기
+- `step-3.webp`: 라볶이 끓이기
 - `step-4.webp`: 화채 만들기
 - `step-5.webp`: 라면사리 넣기
 - `step-6.webp`: 표지 및 완성 화면

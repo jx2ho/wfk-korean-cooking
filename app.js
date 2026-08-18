@@ -53,7 +53,6 @@
       <article class="slide cover-slide">
         <img class="cover-photo" src="${slide.image}" alt="Rabokki and Hwachae ready to serve" />
         <div class="cover-content">
-          <span class="cover-kicker">${escapeHtml(text.kicker)}</span>
           <h1>${escapeHtml(text.title).replaceAll("\n", "<br>")}</h1>
           <p class="cover-foods">${escapeHtml(text.foods)}</p>
           <p class="cover-subtitle">${escapeHtml(text.subtitle)}</p>
@@ -72,13 +71,6 @@
       </header>`;
   }
 
-  function actionStrip(verbs) {
-    return `
-      <div class="action-strip" aria-label="${escapeHtml(verbs.join(", "))}">
-        ${verbs.map((verb) => `<strong>${escapeHtml(verb)}</strong>`).join('<span aria-hidden="true">→</span>')}
-      </div>`;
-  }
-
   function renderSoak(slide, text) {
     return `
       <article class="slide">
@@ -88,7 +80,7 @@
             <div class="photo-wrap">
               <img class="photo" src="${slide.image}" alt="${escapeHtml(text.imageAlt)}" />
             </div>
-            <div class="action-panel">
+            <div class="action-panel step-description">
               <strong>${escapeHtml(text.action)}</strong>
               <p>${escapeHtml(text.detail)}</p>
               <span class="tiny-tip">→ ${escapeHtml(text.tip)}</span>
@@ -106,12 +98,8 @@
           <section class="content-card ingredient-card">
             <div class="ingredient-photo">
               <img class="photo" src="${slide.image}" alt="${escapeHtml(text.imageAlt)}" />
-              <div class="ingredient-labels">
-                <span class="food-tag hwachae">HWACHAE</span>
-                <span class="food-tag rabokki">RABOKKI</span>
-              </div>
             </div>
-            <div class="ingredient-footer">
+            <div class="ingredient-footer step-description">
               <div class="ingredient-group">
                 <b>HWACHAE</b>
                 <span>${escapeHtml(text.hwachae)}</span>
@@ -120,9 +108,10 @@
                 <b>RABOKKI</b>
                 <span>${escapeHtml(text.rabokki)}</span>
               </div>
+              <p class="ingredient-action">${escapeHtml(text.action)}</p>
             </div>
           </section>
-          <div class="safety-line"><span class="warning">!</span><span>${escapeHtml(text.action)} · ${escapeHtml(text.safety)}</span></div>
+          <div class="safety-line step-note"><span class="warning">!</span><span>${escapeHtml(text.safety)}</span></div>
         </div>
       </article>`;
   }
@@ -132,34 +121,30 @@
       <article class="slide">
         <div class="slide-inner">
           ${heading(text, 3)}
-          ${actionStrip(text.verbs)}
           <section class="content-card cook-card">
             <div class="cook-photo">
               <img class="photo" src="${slide.image}" alt="${escapeHtml(text.imageAlt)}" />
-              <span class="cook-photo-label">${escapeHtml(text.imageLabel)}</span>
             </div>
-            <ol class="process-list">${text.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
+            <ol class="process-list step-description">${text.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
           </section>
-          <div class="cook-note"><strong>!</strong><span>${escapeHtml(text.warning)}</span><span>→ ${escapeHtml(text.next)}</span></div>
         </div>
       </article>`;
   }
 
   function renderHwachae(slide, text) {
     const iceGuide = data.settings.showIce
-      ? `<div class="ice-card"><span aria-hidden="true">❄</span><strong>${escapeHtml(text.ice)}</strong></div>`
+      ? `<div class="ice-card step-note"><span aria-hidden="true">❄</span><strong>${escapeHtml(text.ice)}</strong></div>`
       : "";
 
     return `
       <article class="slide">
         <div class="slide-inner">
           ${heading(text, 4)}
-          ${actionStrip(text.verbs)}
           <section class="content-card hwachae-card">
             <div class="hwachae-photo"><img class="photo" src="${slide.image}" alt="${escapeHtml(text.imageAlt)}" /></div>
-            <ol class="mini-steps">${text.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
+            <ol class="mini-steps step-description">${text.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
           </section>
-          <div class="optional-card">
+          <div class="optional-card step-note">
             <span><b>${escapeHtml(text.optionalTitle)}</b> — ${escapeHtml(text.optional)}</span>
             <span class="optional-pill">OPTIONAL</span>
           </div>
@@ -169,7 +154,6 @@
   }
 
   function renderRamen(slide, text) {
-    const hasTip = Boolean(text.detail);
     return `
       <article class="slide">
         <div class="slide-inner">
@@ -177,11 +161,10 @@
           <section class="content-card ramen-card">
             <div class="ramen-photo">
               <img class="photo" src="${slide.image}" alt="${escapeHtml(text.imageAlt)}" />
-              <span class="ramen-cue">${escapeHtml(text.cue)}</span>
             </div>
-            <div class="ramen-instructions${hasTip ? "" : " no-tip"}">
+            <div class="ramen-instructions step-description">
               <strong>${escapeHtml(text.action)}</strong>
-              ${hasTip ? `<p>${escapeHtml(text.detail)}</p>` : ""}
+              <p>${escapeHtml(text.cue)}</p>
             </div>
           </section>
         </div>
@@ -189,17 +172,14 @@
   }
 
   function renderFinish(slide, text) {
-    const ui = data.ui[state.language];
     return `
       <article class="slide finish-slide">
         <img class="cover-photo" src="${slide.image}" alt="Rabokki and Hwachae ready to serve" />
         <div class="finish-content">
-          <span class="cover-kicker">${escapeHtml(text.kicker)}</span>
           <h1>${escapeHtml(text.title)}</h1>
           <div class="done-list"><span>Rabokki ✓</span><span>Hwachae ✓</span></div>
           <p class="culture-phrase" lang="ko">${escapeHtml(text.phrase)}</p>
           <p class="finish-translation">${escapeHtml(text.translation)}</p>
-          <button class="start-over-inline" type="button" data-start-over>${escapeHtml(ui.startOver)}</button>
         </div>
       </article>`;
   }
@@ -218,8 +198,6 @@
     };
 
     elements.slide.innerHTML = renderers[slide.type](slide, text);
-    const startOver = elements.slide.querySelector("[data-start-over]");
-    if (startOver) startOver.addEventListener("click", resetGuide);
   }
 
   function renderControls() {
