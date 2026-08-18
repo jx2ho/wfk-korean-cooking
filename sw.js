@@ -1,10 +1,10 @@
-const CACHE_NAME = "danang-kfood-v17";
+const CACHE_NAME = "danang-kfood-v20";
 const APP_ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=17",
-  "./data.js?v=17",
-  "./app.js?v=17",
+  "./styles.css?v=20",
+  "./data.js?v=20",
+  "./app.js?v=20",
   "./manifest.webmanifest",
   "./assets/taegeuk-icon.png",
   "./assets/step-1.webp",

@@ -9,6 +9,7 @@ window.COOKING_DATA = {
       start: "시작",
       done: "완료",
       intro: "요리 소개",
+      teams: "팀 편성",
       step: "단계",
       recipeEyebrow: "나중에 다시 볼 수 있어요",
       recipeTitle: "전체 레시피",
@@ -24,6 +25,7 @@ window.COOKING_DATA = {
       start: "Start",
       done: "Done",
       intro: "Introduction",
+      teams: "Teams",
       step: "Step",
       recipeEyebrow: "KEEP THIS RECIPE",
       recipeTitle: "Full Recipe",
@@ -39,6 +41,7 @@ window.COOKING_DATA = {
       start: "Bắt đầu",
       done: "Xong",
       intro: "Giới thiệu",
+      teams: "Chia đội",
       step: "Bước",
       recipeEyebrow: "LƯU LẠI CÔNG THỨC",
       recipeTitle: "Công thức đầy đủ",
@@ -71,6 +74,51 @@ window.COOKING_DATA = {
         foods: "Rabokki & Hwachae",
         subtitle: "Hãy cùng nhau nấu món Hàn Quốc!",
       },
+    },
+    {
+      type: "teams",
+      ko: {
+        eyebrow: "5개 조 · 총 32명",
+        title: "우리 팀을 확인해요",
+        headers: ["조", "베트남 학생", "한국인 팀원"],
+      },
+      en: {
+        eyebrow: "5 TEAMS · 32 PEOPLE",
+        title: "Find Your Team",
+        headers: ["Team", "Vietnamese Students", "Korean Team Members"],
+      },
+      vi: {
+        eyebrow: "5 ĐỘI · 32 NGƯỜI",
+        title: "Tìm đội của bạn",
+        headers: ["Đội", "Sinh viên Việt Nam", "Thành viên Hàn Quốc"],
+      },
+      teams: [
+        {
+          group: 1,
+          vietnamese: ["Nguyễn Thị Thu Thảo", "Lê Kim Chi", "Nguyễn Nữ Trà My", "Phạm Thị Kim Chi"],
+          korean: ["영빈", "진영"],
+        },
+        {
+          group: 2,
+          vietnamese: ["Lê Thị Thanh Hiền", "Lê Thị Thanh Truyền", "Nguyễn Đăng Dương", "Nguyễn Phan Hoàng Phong"],
+          korean: ["세연", "선영"],
+        },
+        {
+          group: 3,
+          vietnamese: ["Liên Thị Hoài My", "Võ Thị Thanh Tâm", "Lê Nguyễn Duy Phước", "Vũ Duy Vương"],
+          korean: ["예진", "지수"],
+        },
+        {
+          group: 4,
+          vietnamese: ["Phạm Thị Xoan", "Trần Thị Bích Nhung", "Đặng Ngọc Nhỏ", "Nguyễn Hoàng Vũ"],
+          korean: ["은석", "의림", "혜림"],
+        },
+        {
+          group: 5,
+          vietnamese: ["Mai Anh Thư", "Võ Tùng Dương", "Nguyễn Tố Thanh Tâm", "Nguyễn Thị Thúy Nga", "Đặng Thọ Ngọc"],
+          korean: ["종윤", "민규"],
+        },
+      ],
     },
     {
       type: "intro",

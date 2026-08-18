@@ -107,6 +107,46 @@
       </article>`;
   }
 
+  function renderTeams(slide, text) {
+    return `
+      <article class="slide team-slide">
+        <div class="slide-inner">
+          <header class="slide-heading team-heading">
+            <div>
+              <p class="eyebrow">${escapeHtml(text.eyebrow)}</p>
+              <h1>${escapeHtml(text.title)}</h1>
+            </div>
+          </header>
+          <section class="content-card team-card">
+            <table class="team-table">
+              <colgroup>
+                <col class="team-col-group" />
+                <col class="team-col-vietnamese" />
+                <col class="team-col-korean" />
+              </colgroup>
+              <thead>
+                <tr>${text.headers.map((header) => `<th scope="col">${escapeHtml(header)}</th>`).join("")}</tr>
+              </thead>
+              <tbody>
+                ${slide.teams
+                  .map(
+                    (team) => `
+                      <tr>
+                        <th scope="row"><span>${team.group}</span></th>
+                        <td class="team-vietnamese">
+                          <ul class="team-name-list">${team.vietnamese.map((name) => `<li>${escapeHtml(name)}</li>`).join("")}</ul>
+                        </td>
+                        <td class="team-korean" lang="ko">${team.korean.map(escapeHtml).join(" · ")}</td>
+                      </tr>`,
+                  )
+                  .join("")}
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </article>`;
+  }
+
   function renderSoak(slide, text) {
     return `
       <article class="slide">
@@ -224,6 +264,7 @@
     const text = slide[state.language];
     const renderers = {
       cover: renderCover,
+      teams: renderTeams,
       intro: renderIntro,
       soak: renderSoak,
       cut: renderCut,
@@ -256,6 +297,7 @@
     if (state.slide === 0) elements.progressLabel.textContent = ui.start;
     else if (state.slide === lastIndex) elements.progressLabel.textContent = ui.done;
     else if (cookingStep > 0) elements.progressLabel.textContent = `${ui.step} ${cookingStep} / ${cookingStepTypes.length}`;
+    else if (data.slides[state.slide].type === "teams") elements.progressLabel.textContent = ui.teams;
     else elements.progressLabel.textContent = ui.intro;
 
     elements.progressDots.innerHTML = data.slides
@@ -407,6 +449,7 @@
   });
 
   data.slides.forEach((slide) => {
+    if (!slide.image) return;
     const image = new Image();
     image.src = slide.image;
   });
