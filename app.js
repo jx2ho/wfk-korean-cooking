@@ -80,11 +80,9 @@
             <div class="photo-wrap">
               <img class="photo" src="${slide.image}" alt="${escapeHtml(text.imageAlt)}" />
             </div>
-            <div class="action-panel step-description">
-              <strong>${escapeHtml(text.action)}</strong>
-              <p>${escapeHtml(text.detail)}</p>
-              <span class="tiny-tip">→ ${escapeHtml(text.tip)}</span>
-            </div>
+            <ol class="soak-steps process-list step-description">
+              ${[text.action, text.detail, text.tip].map((step) => `<li>${escapeHtml(step)}</li>`).join("")}
+            </ol>
           </section>
         </div>
       </article>`;
