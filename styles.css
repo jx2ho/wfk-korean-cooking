@@ -685,8 +685,17 @@ button:focus-visible {
   gap: clamp(3px, 0.55dvh, 6px);
 }
 
-.soak-steps {
-  counter-reset: cooking;
+.soak-followup {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(55, 115, 131, 0.11);
+  color: var(--blue-deep);
+  font-size: clamp(12.5px, 1.65dvh, 15px);
+  font-weight: 750;
+  line-height: 1.35;
+  text-align: center;
 }
 
 .process-list li,
@@ -873,6 +882,7 @@ button:focus-visible {
 
 .nav-button {
   height: clamp(44px, 6.5dvh, 54px);
+  width: clamp(104px, 28vw, 124px);
   min-width: 0;
   display: flex;
   align-items: center;
@@ -896,7 +906,12 @@ button:focus-visible {
 }
 
 .nav-next {
+  justify-self: end;
   background: var(--red-deep);
+}
+
+.nav-back {
+  justify-self: start;
 }
 
 .nav-button:disabled {

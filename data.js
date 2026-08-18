@@ -78,6 +78,7 @@ window.COOKING_DATA = {
         action: "떡을 물에 담가주세요.",
         detail: "다른 재료를 준비하는 동안 물에 담가둡니다.",
         tip: "이제 그대로 두고 다음 재료를 준비해요.",
+        followup: "떡이 불려지는 동안 다른 재료를 준비해요.",
         imageAlt: "물이 담긴 그릇에서 떡을 불리는 모습",
       },
       en: {
@@ -86,6 +87,7 @@ window.COOKING_DATA = {
         action: "Put the rice cakes in water.",
         detail: "Leave them in the water while we prepare the other ingredients.",
         tip: "Leave them here and move to the next step.",
+        followup: "Prepare the other ingredients while the rice cakes soak.",
         imageAlt: "Rice cakes soaking in a glass bowl of water",
       },
       vi: {
@@ -94,6 +96,7 @@ window.COOKING_DATA = {
         action: "Cho bánh gạo vào nước để ngâm.",
         detail: "Ngâm trong lúc chuẩn bị các nguyên liệu khác.",
         tip: "Để bánh gạo ngâm và chuyển sang bước tiếp theo.",
+        followup: "Chuẩn bị các nguyên liệu khác trong lúc ngâm bánh gạo.",
         imageAlt: "Bánh gạo đang ngâm trong tô nước",
       },
     },
@@ -176,7 +179,7 @@ window.COOKING_DATA = {
         title: "화채 만들기",
         steps: ["과일을 그릇에 넣습니다.", "준비된 사이다를 넣습니다.", "준비된 우유를 넣습니다.", "부드럽게 섞어주세요."],
         optionalTitle: "연유",
-        optional: "더 달게 먹고 싶다면 조금 넣어주세요.",
+        optional: "더 달게 먹고 싶으면 연유를 더 넣어주세요.",
         ice: "얼음을 조금 넣고 시원하게 즐겨요!",
         imageAlt: "수박, 망고, 바나나가 든 화채",
       },
