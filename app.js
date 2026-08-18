@@ -72,6 +72,13 @@
       </header>`;
   }
 
+  function actionStrip(verbs) {
+    return `
+      <div class="action-strip" aria-label="${escapeHtml(verbs.join(", "))}">
+        ${verbs.map((verb) => `<strong>${escapeHtml(verb)}</strong>`).join('<span aria-hidden="true">→</span>')}
+      </div>`;
+  }
+
   function renderSoak(slide, text) {
     return `
       <article class="slide">
@@ -125,11 +132,7 @@
       <article class="slide">
         <div class="slide-inner">
           ${heading(text, 3)}
-          <div class="measure-strip" aria-label="${escapeHtml(text.water)} 500 grams plus ${escapeHtml(text.sauce)} 250 grams">
-            <div class="measure-card"><span>${escapeHtml(text.water)}</span><strong>500 g</strong></div>
-            <div class="measure-plus">+</div>
-            <div class="measure-card sauce"><span>${escapeHtml(text.sauce)}</span><strong>250 g</strong></div>
-          </div>
+          ${actionStrip(text.verbs)}
           <section class="content-card cook-card">
             <div class="cook-photo">
               <img class="photo" src="${slide.image}" alt="${escapeHtml(text.imageAlt)}" />
@@ -143,15 +146,15 @@
   }
 
   function renderHwachae(slide, text) {
+    const iceGuide = data.settings.showIce
+      ? `<div class="ice-card"><span aria-hidden="true">❄</span><strong>${escapeHtml(text.ice)}</strong></div>`
+      : "";
+
     return `
       <article class="slide">
         <div class="slide-inner">
           ${heading(text, 4)}
-          <div class="ratio-card" aria-label="${escapeHtml(text.sprite)} 2 to ${escapeHtml(text.milk)} 1">
-            <div class="ratio-side"><small>${escapeHtml(text.sprite)}</small><strong>2</strong></div>
-            <span class="ratio-colon">:</span>
-            <div class="ratio-side"><small>${escapeHtml(text.milk)}</small><strong>1</strong></div>
-          </div>
+          ${actionStrip(text.verbs)}
           <section class="content-card hwachae-card">
             <div class="hwachae-photo"><img class="photo" src="${slide.image}" alt="${escapeHtml(text.imageAlt)}" /></div>
             <ol class="mini-steps">${text.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
@@ -160,11 +163,13 @@
             <span><b>${escapeHtml(text.optionalTitle)}</b> — ${escapeHtml(text.optional)}</span>
             <span class="optional-pill">OPTIONAL</span>
           </div>
+          ${iceGuide}
         </div>
       </article>`;
   }
 
   function renderRamen(slide, text) {
+    const hasTip = Boolean(text.detail);
     return `
       <article class="slide">
         <div class="slide-inner">
@@ -174,9 +179,9 @@
               <img class="photo" src="${slide.image}" alt="${escapeHtml(text.imageAlt)}" />
               <span class="ramen-cue">${escapeHtml(text.cue)}</span>
             </div>
-            <div class="ramen-instructions">
+            <div class="ramen-instructions${hasTip ? "" : " no-tip"}">
               <strong>${escapeHtml(text.action)}</strong>
-              <p>${escapeHtml(text.detail)}</p>
+              ${hasTip ? `<p>${escapeHtml(text.detail)}</p>` : ""}
             </div>
           </section>
         </div>
@@ -256,21 +261,46 @@
         <img src="./assets/step-6.webp" alt="Rabokki and Hwachae" />
         <div><h3>${escapeHtml(recipe.title)}</h3><p>${escapeHtml(recipe.subtitle)}</p></div>
       </div>
-      <div class="recipe-metrics">
-        ${recipe.metrics
-          .map(([value, label]) => `<div class="recipe-metric"><b>${escapeHtml(value)}</b><span>${escapeHtml(label)}</span></div>`)
-          .join("")}
-      </div>
-      ${recipe.sections
+      ${recipe.foods
         .map(
-          ([title, steps], index) => `
-            <section class="recipe-section">
-              <div class="recipe-section-heading"><span class="number">0${index + 1}</span><h3>${escapeHtml(title)}</h3></div>
-              <ol>${steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
+          (food) => `
+            <section class="recipe-food recipe-food-${escapeHtml(food.id)}">
+              <header class="recipe-food-header">
+                <div>
+                  <span>${escapeHtml(recipe.serving)}</span>
+                  <h3>${escapeHtml(food.title)}</h3>
+                </div>
+              </header>
+
+              <div class="recipe-ingredients">
+                <h4>${escapeHtml(recipe.ingredientsTitle)}</h4>
+                <dl>
+                  ${food.ingredients
+                    .map(
+                      ([ingredient, amount]) => `
+                        <div>
+                          <dt>${escapeHtml(ingredient)}</dt>
+                          <dd>${escapeHtml(amount)}</dd>
+                        </div>`,
+                    )
+                    .join("")}
+                </dl>
+              </div>
+
+              ${
+                food.ratio
+                  ? `<div class="recipe-ratio"><span>${escapeHtml(recipe.ratioTitle)}</span><strong>${escapeHtml(food.ratio)}</strong></div>`
+                  : ""
+              }
+              ${food.note ? `<p class="recipe-note">${escapeHtml(food.note)}</p>` : ""}
+
+              <div class="recipe-method">
+                <h4>${escapeHtml(recipe.methodTitle)}</h4>
+                <ol>${food.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
+              </div>
             </section>`,
         )
         .join("")}
-      <div class="recipe-highlight">${escapeHtml(recipe.highlight)}</div>
       <button class="start-over-recipe" type="button" data-recipe-start-over>${escapeHtml(ui.startOver)}</button>`;
 
     elements.recipeBody.querySelector("[data-recipe-start-over]").addEventListener("click", () => {
