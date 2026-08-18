@@ -239,6 +239,101 @@ button:focus-visible {
   box-shadow: var(--shadow);
 }
 
+.intro-heading {
+  min-height: clamp(48px, 7dvh, 66px);
+}
+
+.intro-card {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-rows: minmax(150px, 0.88fr) minmax(0, 1.12fr);
+}
+
+.intro-photo {
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.intro-photo .photo {
+  object-position: 50% 52%;
+}
+
+.intro-photo::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 32%;
+  background: linear-gradient(transparent, rgba(43, 38, 31, 0.16));
+  pointer-events: none;
+}
+
+.dish-intros {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  background: var(--cream);
+}
+
+.dish-intro {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(132px, 0.72fr) minmax(0, 1.28fr);
+  align-items: center;
+  gap: clamp(10px, 3vw, 20px);
+  padding: clamp(9px, 1.7dvh, 15px) clamp(13px, 4vw, 22px);
+}
+
+.dish-intro + .dish-intro {
+  border-top: 1px solid var(--line);
+}
+
+.dish-intro-title {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 27px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.dish-intro-title > span {
+  color: var(--red-deep);
+  font-family: Georgia, serif;
+  font-size: clamp(16px, 2.2dvh, 21px);
+  font-style: italic;
+}
+
+.dish-intro-2 .dish-intro-title > span {
+  color: var(--blue-deep);
+}
+
+.dish-intro h2 {
+  margin: 0;
+  font-family: Georgia, "Noto Serif KR", serif;
+  font-size: clamp(20px, 3dvh, 29px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.dish-intro-title p {
+  margin: 4px 0 0;
+  color: var(--red-deep);
+  font-size: clamp(10.5px, 1.4dvh, 12.5px);
+  font-weight: 850;
+  line-height: 1.22;
+}
+
+.dish-intro-2 .dish-intro-title p {
+  color: var(--blue-deep);
+}
+
+.dish-intro-description {
+  margin: 0;
+  color: #554e45;
+  font-size: clamp(12.5px, 1.72dvh, 15.5px);
+  line-height: 1.38;
+}
+
 .photo {
   width: 100%;
   height: 100%;
@@ -1234,6 +1329,17 @@ button:focus-visible {
     padding-inline: 9px;
     font-size: 11.5px;
   }
+
+  .dish-intro {
+    grid-template-columns: 118px minmax(0, 1fr);
+    gap: 8px;
+    padding-inline: 10px;
+  }
+
+  .dish-intro-title {
+    grid-template-columns: 22px minmax(0, 1fr);
+    gap: 5px;
+  }
 }
 
 @media (max-height: 650px) and (orientation: portrait) {
@@ -1262,6 +1368,14 @@ button:focus-visible {
   }
 
   .ingredient-footer {
+    padding-block: 7px;
+  }
+
+  .intro-card {
+    grid-template-rows: minmax(120px, 0.78fr) minmax(0, 1.22fr);
+  }
+
+  .dish-intro {
     padding-block: 7px;
   }
 

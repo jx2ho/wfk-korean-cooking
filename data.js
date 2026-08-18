@@ -8,6 +8,7 @@ window.COOKING_DATA = {
       finish: "완성",
       start: "시작",
       done: "완료",
+      intro: "요리 소개",
       step: "단계",
       recipeEyebrow: "나중에 다시 볼 수 있어요",
       recipeTitle: "전체 레시피",
@@ -22,6 +23,7 @@ window.COOKING_DATA = {
       finish: "Finish",
       start: "Start",
       done: "Done",
+      intro: "Introduction",
       step: "Step",
       recipeEyebrow: "KEEP THIS RECIPE",
       recipeTitle: "Full Recipe",
@@ -36,6 +38,7 @@ window.COOKING_DATA = {
       finish: "Hoàn tất",
       start: "Bắt đầu",
       done: "Xong",
+      intro: "Giới thiệu",
       step: "Bước",
       recipeEyebrow: "LƯU LẠI CÔNG THỨC",
       recipeTitle: "Công thức đầy đủ",
@@ -67,6 +70,61 @@ window.COOKING_DATA = {
         title: "Ẩm thực\nHàn Quốc",
         foods: "Rabokki & Hwachae",
         subtitle: "Hãy cùng nhau nấu món Hàn Quốc!",
+      },
+    },
+    {
+      type: "intro",
+      image: "./assets/step-6.webp",
+      ko: {
+        eyebrow: "오늘의 한국 요리",
+        title: "두 가지 맛을 만나요",
+        imageAlt: "완성된 라볶이와 화채",
+        dishes: [
+          {
+            name: "라볶이",
+            category: "매콤·달콤한 분식",
+            description: "떡볶이에 라면을 더한 요리예요. 쫄깃한 떡과 면을 매콤달콤한 소스에 함께 끓여요.",
+          },
+          {
+            name: "화채",
+            category: "시원한 과일 디저트",
+            description: "여러 과일을 시원한 음료와 우유에 섞어 먹는 한국식 디저트예요.",
+          },
+        ],
+      },
+      en: {
+        eyebrow: "TODAY'S KOREAN DISHES",
+        title: "Meet Two Favorite Flavors",
+        imageAlt: "Finished rabokki and hwachae",
+        dishes: [
+          {
+            name: "Rabokki",
+            category: "Spicy-sweet street food",
+            description: "Tteokbokki with ramen: chewy rice cakes and noodles simmered together in a spicy-sweet sauce.",
+          },
+          {
+            name: "Hwachae",
+            category: "Cool fruit dessert",
+            description: "A Korean fruit punch made by mixing fresh fruit with a chilled fizzy, milky drink.",
+          },
+        ],
+      },
+      vi: {
+        eyebrow: "HAI MÓN HÀN HÔM NAY",
+        title: "Khám phá hai hương vị",
+        imageAlt: "Rabokki và hwachae đã hoàn thành",
+        dishes: [
+          {
+            name: "Rabokki",
+            category: "Món ăn đường phố cay ngọt",
+            description: "Tteokbokki kết hợp mì ramen: bánh gạo dẻo và mì được nấu trong sốt cay ngọt.",
+          },
+          {
+            name: "Hwachae",
+            category: "Tráng miệng trái cây mát lạnh",
+            description: "Món trái cây kiểu Hàn, trộn với nước có ga và sữa, dùng thật lạnh.",
+          },
+        ],
       },
     },
     {

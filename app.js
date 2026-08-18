@@ -71,6 +71,42 @@
       </header>`;
   }
 
+  function renderIntro(slide, text) {
+    return `
+      <article class="slide intro-slide">
+        <div class="slide-inner">
+          <header class="slide-heading intro-heading">
+            <div>
+              <p class="eyebrow">${escapeHtml(text.eyebrow)}</p>
+              <h1>${escapeHtml(text.title)}</h1>
+            </div>
+          </header>
+          <section class="content-card intro-card">
+            <div class="intro-photo">
+              <img class="photo" src="${slide.image}" alt="${escapeHtml(text.imageAlt)}" />
+            </div>
+            <div class="dish-intros">
+              ${text.dishes
+                .map(
+                  (dish, index) => `
+                    <section class="dish-intro dish-intro-${index + 1}">
+                      <div class="dish-intro-title">
+                        <span>${String(index + 1).padStart(2, "0")}</span>
+                        <div>
+                          <h2>${escapeHtml(dish.name)}</h2>
+                          <p>${escapeHtml(dish.category)}</p>
+                        </div>
+                      </div>
+                      <p class="dish-intro-description">${escapeHtml(dish.description)}</p>
+                    </section>`,
+                )
+                .join("")}
+            </div>
+          </section>
+        </div>
+      </article>`;
+  }
+
   function renderSoak(slide, text) {
     return `
       <article class="slide">
@@ -188,6 +224,7 @@
     const text = slide[state.language];
     const renderers = {
       cover: renderCover,
+      intro: renderIntro,
       soak: renderSoak,
       cut: renderCut,
       boil: renderBoil,
@@ -213,9 +250,13 @@
     elements.back.disabled = state.slide === 0;
     elements.next.disabled = state.slide === lastIndex;
 
+    const cookingStepTypes = ["soak", "cut", "boil", "hwachae", "ramen"];
+    const cookingStep = cookingStepTypes.indexOf(data.slides[state.slide].type) + 1;
+
     if (state.slide === 0) elements.progressLabel.textContent = ui.start;
     else if (state.slide === lastIndex) elements.progressLabel.textContent = ui.done;
-    else elements.progressLabel.textContent = `${ui.step} ${state.slide} / 5`;
+    else if (cookingStep > 0) elements.progressLabel.textContent = `${ui.step} ${cookingStep} / ${cookingStepTypes.length}`;
+    else elements.progressLabel.textContent = ui.intro;
 
     elements.progressDots.innerHTML = data.slides
       .map((_, index) => `<i class="${index === state.slide ? "active" : ""}"></i>`)
